@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mainCanvas {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <script src="../js/paper-full.js"></script>
+    <script>
+        paper.install(window);
+        paper.setup(document.querySelector('#mainCanvas'));
+
+        // var c = Shape.Circle(200, 200, 50);
+        // c.fillColor = 'pink';
+
+        // var c;
+        // for (var x = 25; x < 400; x += 50) {
+        //     for (var y = 25; y < 400; y += 50) {
+        //         c = Shape.Circle(x, y, 20);
+        //         c.fillColor = 'pink';
+        //     }
+        // }
+
+        var c = Shape.Circle(200, 200, 80);
+        c.fillColor = 'pink';
+        var text = new PointText(200, 200);
+        text.justification = 'center';
+        text.fillColor = 'wihite';
+        text.fontSize = 20;
+        text.content = 'Hello World';
+
+        // var tool = new Tool();
+        // tool.onMouseDown = function(event) {
+        //     var c = Shape.Circle(event.point.x, event.point.y, 20);
+        //     c.fillColor = 'pink';
+        // };
+
+
+        paper.view.draw();
+    </script>
+</body>
+
+</html>
