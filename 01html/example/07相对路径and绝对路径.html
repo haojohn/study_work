@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 以引用文件所在位置为参考基础，而建立出的目录路径 -->
+    <!-- 相对于此html，在同一级，同一级路径 -->
+    <img src="kuli.jpg" title="相对于此文件，图片所在的位置">
+
+    <!-- 相对于此html,在下一级，下一级路径 ，则以反斜杠/获取-->
+    <img src="images/1.jpg" title="下一级路径">
+
+    <!-- 相对于此html,在上一级，上一级路径，则以../获取 -->
+    <img src="../images/2.jpg" title="上一级路径">
+
+    <!-- 绝对路径 ，通常是从盘符开始的路径 -->
+    <img src="F:\VUEDEMO\git_demo\01html\example\kuli.jpg" title="绝对路径">
+</body>
+
+</html>

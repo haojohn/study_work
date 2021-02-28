@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="xxx.do" method="GET">
+        <!--text 文本框，可以输入任何文字-->
+        <label for="username">用户名：</label>
+        <input type="text" name="username" value="请输入用户名" id="username"> <br>
+        <!--password 密码框 -->
+        <label for="pwd">密码：</label>
+        <input type="password" name="pwd" id="pwd"> <br>
+        <!--radio 单选按钮 -->
+        <!--name 是表单元素名字，这里性别单选按钮必须拥有相同的名字name，才可以实现单选-->
+        性别：男<input type="radio" name="sex" value="男" checked> 女<input type="radio" name="sex" value="女"><br>
+        <!--checkbox 复选框，也是有相同的name值-->
+        爱好：吃饭<input type="checkbox" name="hobby" value="吃饭">睡觉<input type="checkbox" name="hobby" value="睡觉">打豆豆<input type="checkbox" name="hobby" value="打豆豆">
+        <br>
+        <!--summit 提交按钮，当点击之后，可以把form表单域里面的表单数据发送到服务器-->
+        <input type="submit" value="赶紧提交"><br>
+        <!--reset 重置按钮，会清除表单域中所有的数据-->
+        <input type="reset" value="清零"><br>
+        <!--button 普通按钮，主要结合js使用-->
+        <input type="button" value="点击发送免费短信"><br>
+        <!--file 文件域，上传文件使用-->
+        <input type="file">
+    </form>
+</body>
+
+</html>
