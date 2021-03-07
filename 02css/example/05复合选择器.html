@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 后代选择器 */
+        
+        ol li {
+            color: palegreen;
+        }
+        
+        .nav2 ul li a {
+            color: red;
+        }
+        /* 子元素选择器 */
+        
+        .nav>a {
+            color: pink;
+        }
+        /* 并集选择器 */
+        
+        ol,
+        ul {
+            font-size: 20px;
+        }
+        /*链接伪类选择器*/
+        
+        .nav3 a:link {
+            /*未访问的链接*/
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .nav3 a:visited {
+            /*访问过的链接*/
+            color: seagreen;
+        }
+        
+        .nav3 a:hover {
+            /*鼠标经过的链接*/
+            color: sienna;
+        }
+        
+        .nav3 a:active {
+            /*鼠标正在按下，还未弹起的那个链接*/
+            color: black;
+        }
+        /*:focus伪类选择器,用于选取获得焦点的表单元素*/
+        
+        input:focus {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+    </ol>
+    <ul>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+    </ul>
+    <div class="nav">
+        <a href="#">我是儿子</a>
+        <p>
+            <a href="#">我是孙子</a>
+        </p>
+    </div>
+    <div class="nav2">
+        <ul>
+            <li><a href="#">百度</a></li>
+            <li><a href="#">百度</a></li>
+        </ul>
+    </div>
+    <div class="nav3">
+        <a href="#">链接伪类选择器</a>
+    </div>
+    <input type="text" name="" id="">
+</body>
+
+</html>
