@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clearfix::after {
+            content: '';
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        
+        .clearfix {
+            /* IE6、7专有 */
+            *zoom: 1;
+        }
+        
+        .box {
+            width: 800px;
+            background-color: blue;
+        }
+        
+        .damao {
+            float: left;
+            width: 200px;
+            height: 300px;
+            background-color: purple;
+        }
+        
+        .ermao {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .footer {
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box clearfix">
+        <div class="damao">大猫</div>
+        <div class="ermao">二猫</div>
+
+    </div>
+    <div class="footer">底部</div>
+</body>
+
+</html>
