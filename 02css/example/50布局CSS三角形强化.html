@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box1 {
+            width: 0;
+            height: 0;
+            /* 上边框宽度调大，左和下边框宽度设置为0，即撑开了直角三角形 */
+            border-top: 100px solid transparent;
+            border-right: 50px solid skyblue;
+            border-bottom: 0 solid blue;
+            border-left: 0 solid green;
+        }
+        
+        .price {
+            width: 160px;
+            height: 24px;
+            /*子类继承，则都会垂直居中*/
+            line-height: 24px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        
+        .miaosha {
+            position: relative;
+            float: left;
+            width: 90px;
+            height: 100%;
+            background-color: red;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .miaosha i {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-color: transparent #fff transparent transparent;
+            border-style: solid;
+            border-width: 24px 10px 0 0;
+        }
+        
+        .origin {
+            margin-left: 10px;
+            font-size: 12px;
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+
+    <div class="price">
+        <span class="miaosha">
+            $1650
+            <i></i>
+        </span>
+        <span class="origin">$5650</span>
+    </div>
+</body>
+
+</html>
