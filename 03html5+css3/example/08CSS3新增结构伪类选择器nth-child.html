@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1.把所有偶数even的孩子选出来 */
+        
+        ul li:nth-child(even) {
+            background-color: pink;
+        }
+        /* 2.把所有奇数odd选出来 */
+        
+        ul li:nth-child(odd) {
+            background-color: rebeccapurple;
+        }
+        
+        ol li:nth-child(-n+5) {
+            /*前5个*/
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ul>
+    <ol>
+        <li>我是第n个孩子</li>
+        <li>我是第n个孩子</li>
+        <li>我是第n个孩子</li>
+        <li>我是第n个孩子</li>
+        <li>我是第n个孩子</li>
+        <li>我是第n个孩子</li>
+        <li>我是第n个孩子</li>
+        <li>我是第n个孩子</li>
+    </ol>
+</body>
+
+</html>

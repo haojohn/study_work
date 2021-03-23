@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header-logo {
+            position: relative;
+        }
+        
+        .logo {
+            display: block;
+            width: 55px;
+            height: 55px;
+            overflow: hidden;
+            background-color: #ff6700;
+            text-align: left;
+            text-indent: -9999em;
+        }
+        
+        .logo::before {
+            /* 定位 */
+            position: absolute;
+            /* 伪元素必须要设置content属性 */
+            content: '';
+            left: 0;
+            top: 0;
+            width: 55px;
+            height: 55px;
+            /* 设置过渡 */
+            transition: all 0.3s;
+            /* 背景图片 */
+            background: url(images/mi-logo.png) no-repeat center center;
+            /* 透明度 */
+            opacity: 1;
+        }
+        
+        .logo::after {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            width: 55px;
+            height: 55px;
+            transition: all 0.3s;
+            background: url(images/mi-home.png) no-repeat center center;
+            margin-left: -55px;
+            opacity: 0;
+        }
+        
+        .logo:hover::before {
+            opacity: 0;
+            margin-left: 55px;
+        }
+        
+        .logo:hover::after {
+            opacity: 1;
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-logo">
+        <a href="#" class="logo" title="小米官网"></a>
+    </div>
+</body>
+
+</html>
