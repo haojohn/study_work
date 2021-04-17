@@ -1,0 +1,125 @@
+.nav {
+    overflow: hidden;
+}
+
+.sk {
+    position: absolute;
+    left: 190px;
+    top: 40px;
+    border-left: 1px solid #c81523;
+    padding: 3px 0 0 15px;
+}
+
+.sk_list {
+    float: left;
+}
+
+.sk_list ul li {
+    float: left;
+}
+
+.sk_list ul li a {
+    display: block;
+    line-height: 47px;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+}
+
+.sk_con {
+    float: left;
+}
+
+.sk_con ul li {
+    float: left;
+}
+
+.sk_con ul li a {
+    display: block;
+    /* 行高等于高是水平居中，如果大于高度，则偏下 */
+    line-height: 49px;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+.sk_con ul li:last-child a::after {
+    content: '\e91e';
+    font-family: 'icomoon';
+}
+
+.sk_bd .goods {
+    float: left;
+    position: relative;
+    width: 288px;
+    height: 458px;
+    border: 1px solid transparent;
+    margin-right: 13px;
+}
+
+.sk_bd ul .goods:nth-child(4n) {
+    margin-right: 0;
+}
+
+.sk_bd .goods:hover {
+    border: 1px solid #b1191a;
+}
+
+.goods_title {
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+    padding: 10px;
+}
+
+.goods_price {
+    padding: 0 10px;
+}
+
+.goods_price em {
+    font-size: 22px;
+    color: #e60012;
+}
+
+.goods_price del {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a4a4a4;
+}
+
+.goods_progress {
+    padding: 0 10px;
+}
+
+.bar {
+    display: inline-block;
+    width: 130px;
+    height: 10px;
+    border: 1px solid #b1191a;
+    vertical-align: middle;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.bar_in {
+    width: 87%;
+    height: 10px;
+    background-color: #f24394;
+}
+
+.goods_progress em,
+.goods_progress i {
+    color: #f24349;
+}
+
+.goods_buy {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #b1191a;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+}
