@@ -1,0 +1,62 @@
+.w {
+    /* 版心宽度 */
+    width: 1190px;
+    margin: 0 auto;
+}
+
+
+/* 声明字体图标 */
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?tomleg');
+    src: url('../fonts/icomoon.eot?tomleg#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?tomleg') format('truetype'), url('../fonts/icomoon.woff?tomleg') format('woff'), url('../fonts/icomoon.svg?tomleg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.shortcut {
+    height: 31px;
+    background-color: #f7f7f7;
+    line-height: 31px;
+}
+
+.shortcut span {
+    color: #999;
+    margin-right: 10px;
+}
+
+.shortcut a {
+    color: #333;
+    margin-left: 10px;
+}
+
+.header_hd {
+    position: relative;
+    height: 76px;
+    background-color: pink;
+    line-height: 76px;
+}
+
+.logo {
+    float: left;
+    position: absolute;
+    top: 20px;
+    width: 255px;
+    height: 38px;
+}
+
+.logo a {
+    display: block;
+    width: 255px;
+    height: 38px;
+    background: url(../images/logo.png) no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.menu ul li {
+    float: right;
+    margin-right: 10px;
+}

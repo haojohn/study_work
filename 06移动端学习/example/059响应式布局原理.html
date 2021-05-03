@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            height: 150px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+        /* 超小屏幕（手机，小于768px）：设置宽度为100% */
+        
+        @media screen and (max-width:767px) {
+            .container {
+                width: 100%;
+            }
+        }
+        /* 小屏幕（平板，大于等于768px）：设置宽度为750px */
+        
+        @media screen and (min-width:768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        /* 中等屏幕（桌面显示器，大于等于992px）：宽度设置为970px */
+        
+        @media screen and (min-width:992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        /* 大屏幕（大桌面显示器，大于等于1200px）：宽度设置为1170px */
+        
+        @media screen and (min-width:1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 响应式开发里面，首先需要一个布局容器 -->
+    <div class="container"></div>
+</body>
+
+</html>

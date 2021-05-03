@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            /* 加上透视，才会有3d的感觉 */
+            perspective: 500px;
+        }
+        
+        img {
+            display: block;
+            margin: 100px auto;
+            transition: all 1s;
+        }
+        
+        img:hover {
+            /* 沿x轴进行旋转 */
+            /* transform: rotateX(180deg); */
+            /* 沿y轴进行旋转 */
+            /* transform: rotateY(180deg); */
+            transform: rotateZ(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/pig.jpg" alt="">
+</body>
+
+</html>

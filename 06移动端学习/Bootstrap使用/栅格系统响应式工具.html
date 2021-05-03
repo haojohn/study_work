@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        .row div:nth-child(1) {
+            height: 50px;
+            background-color: pink;
+        }
+        
+        .row div:nth-child(2) {
+            height: 50px;
+            background-color: purple;
+        }
+        
+        .row div:nth-child(3) {
+            height: 50px;
+            background-color: greenyellow;
+        }
+        
+        .row div:nth-child(4) {
+            height: 50px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">1</div>
+            <div class="col-xs-3">2</div>
+            <!-- 当中等屏幕隐藏起来 -->
+            <div class="col-xs-3 hidden-md">我会变魔术哦</div>
+            <div class="col-xs-3">4</div>
+        </div>
+    </div>
+</body>
+
+</html>

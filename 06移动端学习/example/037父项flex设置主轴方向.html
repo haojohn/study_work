@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            width: 800px;
+            height: 300px;
+            background-color: pink;
+            /* 设置主轴方向，谁为主轴，元素沿谁排列 */
+            /* x轴为主轴，则按x方向排列 */
+            /* flex-direction: row; */
+            /* y轴为主轴，则按y方向排列 */
+            flex-direction: column;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: powderblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span><span>2</span><span>3</span>
+    </div>
+</body>
+
+</html>
