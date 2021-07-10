@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <input type="text" value="输入内容">
+
+    <script>
+        // type、value、checked、selected、disabled
+        //1.获取元素
+        let btn = document.querySelector('button');
+        let input = document.querySelector('input');
+        //2.注册事件 处理程序
+        btn.onclick = function() {
+            // 表单属性值 innerHTML ,innerText 是不能使用的，只能用value
+            input.value = '点击了按钮';
+            // 点击之后，就禁用按钮
+            // btn.disabled = true;
+            this.disabled = true; //this指向的是事件函数的调用者，就是btn
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+
+    <script>
+        // 获取元素
+        let btns = document.querySelectorAll('button');
+        // 传统注册事件,只能设置一个处理函数，如果有多个，则最后的处理函数会覆盖之前的
+        btns[0].onclick = function() {
+            alert('hi');
+        }
+        btns[0].onclick = function() {
+            alert('hao a u');
+        }
+
+        //方法监听注册事件，可以注册多个监听器即处理函数，而且按顺序执行
+        btns[1].addEventListener('click', () => {
+            alert('222');
+        })
+        btns[1].addEventListener('click', () => {
+            alert('333');
+        })
+        btns[1].addEventListener('click', () => {
+            alert('444');
+        })
+    </script>
+</body>
+
+</html>

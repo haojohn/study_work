@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.翻转数组
+        let arr = ['pink', 'red', 'blue'];
+        arr.reverse(); //翻转数组
+        console.log(arr);
+
+        //2.数组排序（冒泡排序）
+        let arr1 = [13, 4, 77, 1, 7];
+        arr1.sort(); //这样写是有问题的，如果是两位数及以上会排序错乱,一般不这样写
+        //真正的写法，里面写一个函数，如下
+        // arr1.sort((a, b) => a - b); //升序排列
+        arr1.sort((a, b) => b - a); //降序排列
+        console.log(arr1);
+    </script>
+</body>
+
+</html>

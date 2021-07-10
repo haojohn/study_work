@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            position: absolute;
+            top: 300px;
+            left: 0;
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn800">走800</button>
+    <button class="btn500">走500</button>
+    <span>夏雨荷</span>
+
+    <script>
+        // 简单动画函数封装,obj目标对象,target目标位置
+        // 给不同的元素指定不同的定时器
+        function animate(obj, target) {
+            // 当我们不断点击按钮,这个元素的速度会越来越快,因为开启了太多的定时器
+            // 解决方案就是 让我们元素只有一个定时器执行
+            // 先清除以前的定时器,只保留当前的一个定时器执行
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                // 步长写到定时器里面,不要出现小数
+                let step = (target - obj.offsetLeft) / 10;
+                // 如果step为正,则向上取整,为负则向下取整
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft === target) {
+                    // 停止动画,本质停止计时器
+                    clearInterval(obj.timer);
+                }
+                // 把每次加1 这个步长值改为一个慢慢变小的值,
+                // 步长公式=(目标值-元素现在的位置)/10,一直在变化,所以写在定时器里面
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15)
+        };
+
+
+        let objspan = document.querySelector('span');
+        let btn800 = document.querySelector('.btn800');
+        let btn500 = document.querySelector('.btn500');
+
+        btn800.addEventListener('click', function() {
+            animate(objspan, 800);
+        });
+        btn500.addEventListener('click', function() {
+            animate(objspan, 500);
+        });
+    </script>
+</body>
+
+</html>

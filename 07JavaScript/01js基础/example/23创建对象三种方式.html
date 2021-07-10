@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.利用对象字面量创建对象{}
+        let obj = {} //创建空对象
+        let obj2 = {
+            uname: '张三丰',
+            age: 18,
+            sex: '男',
+            sayHi: function() {
+                console.log('Hello~');
+            }
+        };
+        // 调用对象属性
+        console.log(obj2.age);
+        console.log(obj2['uname']);
+        //调用方法
+        obj2.sayHi();
+
+        //2.利用new Object创建对象
+        let obj3 = new Object(); //创建空对象
+        obj3.uname = '张三丰';
+        obj3.age = 20;
+        obj3.sex = '男';
+        obj3.sayHello = function() {
+            console.log('OBJ');
+        };
+        // 调用
+        console.log(obj3.uname);
+        obj3.sayHello();
+
+        // 3.构造函数创建对象
+        function Star(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+            this.sing = function(song) {
+                console.log(song);
+            }
+        };
+        // 调用构造函数
+        let ldh = new Star('刘德华', 20, '男');
+        console.log(typeof ldh);
+        console.log(ldh.sex);
+    </script>
+</body>
+
+</html>

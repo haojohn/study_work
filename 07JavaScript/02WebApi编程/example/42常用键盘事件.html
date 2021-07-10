@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //常用键盘事件
+        // keyup 按键弹起时候触发
+        document.addEventListener('keyup', function() {
+            console.log('我弹起了');
+        });
+
+        //keydown 按下按键的时候触发，按键不区分大小写
+        document.addEventListener('keydown', function() {
+            console.log('我按下了down');
+        });
+
+        //keypress 按下按键的时候触发，不能识别功能键，如ctrl，但按键是区分大小写
+        document.addEventListener('keypress', function() {
+            console.log('我按下了press');
+        })
+
+        //三个事件的执行顺序：keydown--keypress--keyup
+    </script>
+
+</body>
+
+</html>

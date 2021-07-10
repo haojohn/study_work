@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="">
+    <script>
+        let ipt = document.querySelector('input');
+        // 核心思路：判断用户是否按下s健，按下，则把光标定位到搜索框里面
+        //不用keydown要用keyup，只有当鼠标弹起时，才会定位
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode === 83) {
+                ipt.focus(); //鼠标光标定位到input
+            }
+        })
+    </script>
+</body>
+
+</html>

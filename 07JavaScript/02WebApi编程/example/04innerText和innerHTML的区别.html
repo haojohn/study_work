@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="in01"></div>
+    <div id="in02"></div>
+    <p>
+        我是文字
+        <span>123</span>
+    </p>
+    <script>
+        //innerText 不识别html标签，
+        let in01 = document.querySelector('#in01');
+        in01.innerText = '<strong>今天</strong>是个好日';
+        //innerHTML 识别html标签
+        let in02 = document.querySelector('#in02');
+        in02.innerHTML = '<strong>今天</strong>是个好日子';
+
+        let p = document.querySelector('p');
+        console.log(p.innerText);
+        console.log(p.innerHTML);
+    </script>
+</body>
+
+</html>

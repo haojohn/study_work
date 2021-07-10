@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 添加删除数组元素方法
+        // push() 在数组末尾，添加一个或多个数组元素 push推进
+        let arr = [1, 2, 3];
+        console.log(arr.push(4, 5, 6)); //push完毕之后，返回的结果是新数组的长度 6
+        console.log(arr); //新数组
+
+        //unshift() 在数组开头添加一个或多个元素
+        console.log(arr.unshift('red', 'pink')); //unshift完毕之后返回的是新数组的长度
+        console.log(arr); //新数组
+
+        //删除数组元素
+        // pop()删除数组的最后一个元素
+        let arr2 = [1, 2, 3, 'pink', 'blue'];
+        console.log(arr2.pop()); //pop完毕之后返回的是删除的元素值
+        console.log(arr2); //新数组
+        //shift()删除数组的第一个元素
+        console.log(arr2.shift()); //shift完毕之后返回的是删除元素值
+        console.log(arr2); //新数组
+
+        //筛选数组，删除数组中小于2000的工资
+        let arr3 = [1500, 1200, 2000, 2100, 1800];
+        let newArr = [];
+        for (let i = 0; i < arr3.length; i++) {
+            if (arr3[i] < 2000) {
+                // newArr[newArr.length] = arr3[i];
+                newArr.push(arr3[i]);
+            }
+        }
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.Math内置对象，不是一个构造函数，所以我们不需要new，而是直接使用属性和方法
+        console.log(Math.PI);
+        console.log(Math.max(1, 22, 99, 23));
+        //2.随机数 random(); 返回随机数，随机数范围[0,1),即0<=x<1
+        function getRandom(min, max) {
+            // 返回两者值得随机整数， 并且包含这2个整数
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        console.log(getRandom(1, 100));
+    </script>
+</body>
+
+</html>

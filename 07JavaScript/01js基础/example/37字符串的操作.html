@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 字符串对象，根据字符返回位置
+        let str = '改革春风春满地，春天来了';
+        console.log(str.indexOf('春')); //2
+        console.log(str.indexOf('春', 3)); //从索引号3查找春
+
+        // 求某个字符串出现的位置及次数
+        let str1 = 'abcoefoxyozzopp'; //查找o所出现的位置以及次数
+        let num = 0;
+        let index = str1.indexOf('o');
+        while (index !== -1) {
+            console.log(index);
+            num++;
+            index = str1.indexOf('o', index + 1);
+        }
+        console.log(`出现的次数${num}`);
+
+        //求red出现的次数
+        let arr = ['red', 'blue', 'red', 'green', 'pink', 'red'];
+        let arrnum = 0;
+        let arrindex = arr.indexOf('red');
+        while (arrindex !== -1) {
+            console.log(arrindex);
+            arrnum++;
+            arrindex = arr.indexOf('red', arrindex + 1);
+        }
+        console.log(arrnum);
+
+        //判断字符串，求其中出现次数最多的字符，并统计其次数
+        let str01 = 'abcoefoxyozzopp';
+        let obj = {}; //空对象
+        for (let i = 0; i < str01.length; i++) {
+            let charb = str01.charAt(i);
+            if (obj[charb]) { //判断对象有没有该属性
+                obj[charb]++; // 有的话，该属性+1
+            } else {
+                obj[charb] = 1; //没有的话，添加该属性，赋值为1
+            }
+        }
+        console.log(obj);
+        let max = 0;
+        let chars = '';
+        for (const key in obj) {
+            if (obj[key] > max) {
+                max = obj[key];
+                chars = key;
+            }
+        }
+        console.log(`出现次数最多的字符为${chars},出现次数为${max}`);
+
+        //截取字符串 substr('起始位置'，'截取的数量')
+        let str02 = '改革春风春满地';
+        console.log(str02.substr(2, 2)); //春风
+
+        //替换字符串 replace
+        let str03 = 'andybndy';
+        console.log(str03.replace('a', 'b')); //只会替换字符串中第一个a
+        let str04 = 'abcoefoxyozzopp'; //替换里面所有的o为*
+        while (str04.indexOf('o') !== -1) {
+            str04 = str04.replace('o', '*');
+        }
+        console.log(str04);
+
+        //把字符串转换为数组split('分隔符')，join('分隔符')把数组转换为字符串
+        let str05 = 'red,pink,blue';
+        console.log(str05.split(','));
+        let str06 = 'red&pink&blue';
+        console.log(str06.split('&'));
+    </script>
+</body>
+
+</html>

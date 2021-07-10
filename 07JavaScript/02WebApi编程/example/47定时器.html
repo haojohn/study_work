@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.setTimeout(调用函数,[毫秒数]),当毫秒数到了就执行调用函数，只执行一次，里面的调用函数也称为回调函数callback
+        // 页面中可能有多个定时器，所以经常给定时器起一个标识符
+
+        setTimeout(function() {
+            console.log('开始执行');
+        }, 2000);
+
+        let timer1 = setTimeout();
+        let timer2 = setTimeout();
+    </script>
+</body>
+
+</html>

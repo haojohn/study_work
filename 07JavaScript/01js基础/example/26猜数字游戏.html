@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getRandom(min, max) {
+            // 返回两者值得随机整数， 并且包含这2个整数
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let random = getRandom(1, 10);
+        while (true) { //死循环
+            let num = prompt('你来猜，输入1-10之间的一个整数');
+            if (num > random) {
+                alert('你猜大了');
+            } else if (num < random) {
+                alert('你猜小了');
+            } else {
+                alert('恭喜你，猜对了！');
+                break; //退出整个循环
+            }
+        }
+    </script>
+</body>
+
+</html>

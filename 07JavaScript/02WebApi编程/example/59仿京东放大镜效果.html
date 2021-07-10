@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .preview_img {
+            position: relative;
+            height: 398px;
+            width: 398px;
+            border: 1px solid #ccc;
+        }
+        
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: #fede4f;
+            border: 1px solid #ccc;
+            /* 半透明的颜色 */
+            opacity: .5;
+            cursor: move;
+        }
+        
+        .big {
+            overflow: hidden;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 410px;
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+            border: 1px solid #ccc;
+            z-index: 999;
+        }
+        
+        .big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preview_img">
+        <img src="../images/s3.png" alt="">
+        <div class="mask"></div>
+        <div class="big">
+            <img src="../images/big.jpg" alt="" class="bigImg">
+        </div>
+    </div>
+    <script>
+        // 放大镜效果
+        // 获取元素
+        let preview_img = document.querySelector('.preview_img');
+        let mask = document.querySelector('.mask');
+        let big = document.querySelector('.big');
+        // 1.当鼠标经过大盒子preview_img时，遮挡层和大图片显示
+        preview_img.addEventListener('mouseover', function() {
+            mask.style.display = 'block';
+            big.style.display = 'block';
+        });
+        // 当鼠标离开大盒子时，遮挡层和大图片隐藏
+        preview_img.addEventListener('mouseout', function() {
+            mask.style.display = 'none';
+            big.style.display = 'none';
+        });
+        //2.当鼠标移动的时候,让黄色的盒子跟着鼠标来走动
+        preview_img.addEventListener('mousemove', function(e) {
+            // 1.先计算出鼠标在盒子内的坐标
+            let x = e.pageX - this.offsetLeft;
+            let y = e.pageY - this.offsetTop;
+            // 2.然后把坐标赋值给遮罩层，要减去遮罩层高度与宽度的一半，让鼠标箭头保持在中间
+            let maskX = x - mask.offsetWidth / 2;
+            let maskY = y - mask.offsetHeight / 2;
+            // 如果x坐标小于0就i让它停在0的位置，大于大盒子-黄色盒子的宽度，就让值为大盒子-黄色盒子
+            let maskXMax = preview_img.offsetWidth - mask.offsetWidth;
+            let maskYMax = preview_img.offsetHeight - mask.offsetHeight;
+            if (maskX <= 0) {
+                maskX = 0;
+            } else if (maskX >= maskXMax) {
+                maskX = maskXMax;
+            }
+            if (maskY <= 0) {
+                maskY = 0;
+            } else if (maskY >= maskYMax) {
+                maskY = maskYMax;
+            }
+            mask.style.left = maskX + 'px';
+            mask.style.top = maskY + 'px';
+
+            //大图片移动的距离=遮挡层移动距离*大图片最大移动距离/遮挡层的最大移动距离
+            let bigImg = document.querySelector('.bigImg');
+            let bigXMax = bigImg.offsetWidth - big.offsetWidth;
+            let bigYMax = bigImg.offsetHeight - big.offsetHeight;
+            // 大图片移动距离x,y
+            let bigX = maskX * bigXMax / maskXMax;
+            let bigY = maskY * bigYMax / maskYMax;
+            bigImg.style.left = -bigX + 'px';
+            bigImg.style.top = -bigY + 'px';
+        })
+    </script>
+</body>
+
+</html>

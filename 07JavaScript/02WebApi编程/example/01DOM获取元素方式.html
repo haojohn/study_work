@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="time">2021-02-04</div>
+
+    <ul>
+        <li>知否知否，应是等你好久1</li>
+        <li>知否知否，应是等你好久2</li>
+        <li>知否知否，应是等你好久3</li>
+        <li>知否知否，应是等你好久4</li>
+        <li>知否知否，应是等你好久5</li>
+    </ul>
+    <ul id="nav">
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+    </ul>
+
+    <div class="box">盒子1</div>
+    <div class="box">盒子2</div>
+    <div class="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+
+    <script>
+        // 通过id获取元素 getElementById('id')
+        let timer = document.getElementById('time');
+        console.log(timer);
+        console.log(typeof timer); //返回的是对象object
+        console.dir(timer); //打印对象的属性和方法
+
+        //通过标签名获取元素 
+        let lis = document.getElementsByTagName('li'); //返回元素对象集合
+        console.log(lis);
+        for (let i = 0; i < lis.length; i++) { //遍历
+            console.log(lis[i]);
+        }
+        let nav = document.getElementById('nav');
+        let navList = nav.getElementsByTagName('li');
+        console.log(navList);
+
+        //H5方法
+        // 通过类名获取
+        let boxs = document.getElementsByClassName('box');
+        console.log(boxs);
+
+        //通过选择器获取，即#id、.class、tags等都可以，但
+        // querSelector(选择器) 只能返回指定选择器的第一个元素对象
+        let box = document.querySelector('.box');
+        console.log(box);
+        // querSelectorAll(选择器) 返回指定选择器的所有素对象
+        let allBox = document.querySelectorAll('.box');
+        console.log(allBox);
+    </script>
+</body>
+
+
+</html>

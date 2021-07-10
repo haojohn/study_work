@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://www.baidu.com/">百度</a>
+
+    <script>
+        // 阻止事件默认行为，让链接不跳转，或者让提交按钮不提交
+        let a = document.querySelector('a');
+        a.addEventListener('click', function(e) {
+            e.preventDefault(); //有兼容性问题，
+
+        })
+    </script>
+</body>
+
+</html>

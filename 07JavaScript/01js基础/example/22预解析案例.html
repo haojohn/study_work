@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 案例1 结果输出为 undefined
+        var num = 10;
+        fun();
+
+        function fun() {
+            console.log(num);
+            var num = 20;
+        }
+        //上面的案例1预解析相当于
+        var num;
+
+        function fun() {
+            var num;
+            console.log(num);
+            num = 20;
+        }
+        num = 10;
+        fun();
+
+        // 案例2  结果输出为 undefined，20
+        var num = 10;
+
+        function fn() {
+            console.log(num);
+            var num = 20;
+            console.log(num);
+        }
+        fn();
+        // 上面案例2执行步骤相当于
+        var num;
+
+        function fn() {
+            var num;
+            console.log(num);
+            num = 20;
+            console.log(num);
+        }
+        num = 10;
+        fn();
+
+        // 案例3 结果为undefined，9
+        var a = 18;
+        f1();
+
+        function f1() {
+            var b = 9;
+            console.log(a);
+            console.log(b);
+            var a = '123';
+        }
+        // 上面案例3执行步骤
+        var a;
+
+        function f1() {
+            var b;
+            var a;
+            b = 9;
+            console.log(a);
+            console.log(b);
+
+            a = '123';
+        }
+        a = 18;
+        f1();
+
+        // 案例4，经典面试题 结果为9，9，9，9，9，报错未定义
+        f1();
+        console.log(c);
+        console.log(b);
+        console.log(a);
+
+        function f1() {
+            var a = b = c = 9;
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+        //案例4执行过程如下
+        function f1() {
+            // 相当于 var a = 9; b=9; c=9, 所以其中b和c没有var，相当于全局变量
+            //var a = b = c = 9;
+            var a;
+            a = b = c = 9;
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+        f1();
+        console.log(c);
+        console.log(b);
+        console.log(a);
+    </script>
+</body>
+
+</html>

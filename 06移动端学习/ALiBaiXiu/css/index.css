@@ -124,7 +124,10 @@ header {
     margin-bottom: 10px;
 }
 
-.news li a {
+
+/* 表示li的亲儿子a */
+
+.news li>a {
     position: relative;
     display: block;
     width: 100%;
@@ -134,6 +137,12 @@ header {
 .news li:nth-child(1) {
     width: 50%;
     height: 266px;
+}
+
+.carousel,
+.carousel img {
+    width: 100%;
+    height: 266px !important;
 }
 
 .news li:nth-child(1) p {
@@ -147,7 +156,14 @@ header {
     height: 100%;
 }
 
-.news li a p {
+.carousel-caption {
+    line-height: 41px;
+    font-size: 16px !important;
+    padding: 0 !important;
+}
+
+.news li a p,
+.carousel-caption {
     position: absolute;
     bottom: 0;
     left: 0;

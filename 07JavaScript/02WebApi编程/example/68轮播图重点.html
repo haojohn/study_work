@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .focus {
+            position: relative;
+            width: 721px;
+            height: 455px;
+            background-color: purple;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        
+        .focus ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600%;
+        }
+        
+        .focus ul li {
+            float: left;
+        }
+        
+        .arrow-l,
+        .arrow-r {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 24px;
+            height: 40px;
+            background: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-size: 18px;
+            z-index: 2;
+        }
+        
+        .arrow-r {
+            right: 0;
+        }
+        
+        .circle {
+            position: absolute;
+            bottom: 10px;
+            left: 50px;
+        }
+        
+        .circle li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            border: 2px solid rgba(255, 255, 255, .5);
+            margin: 0 3px;
+            border-radius: 50%;
+            cursor: pointer;
+            list-style: none;
+        }
+        
+        .current {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <div class="mian">
+            <div class="focus">
+                <!-- 左侧按钮 -->
+                <a href="javascript:;" class="arrow-l">
+                    &lt;
+                </a>
+                <!-- 右侧按钮 -->
+                <a href="javascript:;" class="arrow-r">
+                    &gt;
+                </a>
+                <!-- 核心滚动区域 -->
+                <ul>
+                    <li>
+                        <a href="#"><img src="../images/focus.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../images/focus1.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../images/focus2.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../images/focus3.jpg" alt=""></a>
+                    </li>
+                </ul>
+                <!-- 小圆圈 -->
+                <ol class="circle">
+
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script src="animate.js"></script>
+    <script>
+        // 获取元素
+        let arrow_l = document.querySelector('.arrow-l');
+        let arrow_r = document.querySelector('.arrow-r');
+        let focu = document.querySelector('.focus');
+
+        let focusWidth = focu.offsetWidth;
+
+        //1. 鼠标经过大盒子，则左右箭头出现，离开则隐藏
+        focu.addEventListener('mouseenter', function() {
+            arrow_l.style.display = 'block';
+            arrow_r.style.display = 'block';
+            clearInterval(timer);
+            timer = null; //清除定时器变量
+        });
+        focu.addEventListener('mouseleave', function() {
+            arrow_l.style.display = 'none';
+            arrow_r.style.display = 'none';
+            timer = setInterval(function() {
+                // 自动调用右侧按钮点击事件
+                arrow_r.click();
+            }, 2000);
+        });
+
+        // 2.动态生成小圆圈，根据轮播图图片的个数来生成
+        let ul = focu.querySelector('ul');
+        let ol = focu.querySelector('.circle');
+        console.log(ul.children.length);
+        for (let i = 0; i < ul.children.length; i++) {
+            // 创建小li
+            let li = document.createElement('li');
+            // 记录当前小li 的索引号，通过自定义属性来做
+            li.setAttribute('index', i);
+            // 添加到ol中
+            ol.appendChild(li);
+            // 排他思想，直接在生成的li上添加点击事件，当触发时，添加curretn类
+            li.addEventListener('click', function() {
+                // 干掉所有人，清除所有小li的类名
+                for (let i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                // 留下我自己，设置当前类的类名为current
+                this.className = 'current';
+                // 3.点击小圆圈滚动图片，移动图片，移动的是ul
+                // ul的移动距离，小圆圈索引号*图片的宽度，注意是负值
+
+                let index = this.getAttribute('index');
+                // 当点击某个小li，就把当前这个小li的索引号给到num和circle
+                num = index;
+                circle = index;
+                console.log(focusWidth);
+                // ul移动距离
+                let target = -(focusWidth * index)
+                animate(ul, target);
+
+            })
+        }
+        // 把ol中第一个小li设置为类名为current
+        ol.children[0].className = 'current';
+        //4. 克隆第一张图片，放到ul的最后面，true代表深克隆
+        let firstimg = ul.children[0].cloneNode(true);
+        ul.appendChild(firstimg);
+        // 5.点击右侧按钮，图片滚动一张
+        let num = 0;
+        // circle 控制小圆圈的播放
+        let circle = 0;
+        // flag 节流阀
+        let flag = true;
+        arrow_r.addEventListener('click', function() {
+            if (flag) {
+                flag = false;
+                // 如果走到了最后复制的一张图片，此时，我们的ul要快速复原left为0
+                if (num === ul.children.length - 1) {
+                    ul.style.left = 0;
+                    num = 0;
+                }
+                num++;
+                animate(ul, -num * focusWidth, function() {
+                    flag = true;
+                });
+                // 6.点击右侧按钮，小圆圈跟随一起变化，可以再声明一个变量控制小圆圈的播放
+                circle++;
+                // 
+                if (circle === ol.children.length) {
+                    circle = 0;
+                }
+                // 调用函数
+                circleChange();
+            }
+        });
+        // 点击左侧按钮
+        arrow_l.addEventListener('click', function() {
+            if (flag) {
+                flag = false;
+                // 如果走到了最后复制的一张图片，此时，我们的ul要快速复原left为0
+                if (num === 0) {
+                    num = ul.children.length - 1;
+                    ul.style.left = -num * focusWidth + 'px';
+                }
+                num--;
+                animate(ul, -num * focusWidth, function() {
+                    flag = true;
+                });
+                // 6.点击右侧按钮，小圆圈跟随一起变化，可以再声明一个变量控制小圆圈的播放
+                circle--;
+                // 
+                if (circle < 0) {
+                    circle = ol.children.length - 1;
+                }
+                // 调用函数
+                circleChange();
+            }
+        });
+
+        function circleChange() {
+            // 先清除其余小圆圈的current类名
+            for (let i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = '';
+            }
+            // 留下当前的小圆圈的current类名
+            ol.children[circle].className = 'current';
+        };
+
+        // 自动播放轮播图，类似于点击右侧按钮，
+        let timer = setInterval(function() {
+            // 自动调用右侧按钮点击事件
+            arrow_r.click();
+        }, 2000);
+    </script>
+</body>
+
+</html>

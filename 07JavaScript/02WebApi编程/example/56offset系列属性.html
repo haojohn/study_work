@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .father {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: powderblue;
+            margin-left: 20px;
+        }
+        
+        .w {
+            width: 200px;
+            height: 200px;
+            background-color: seagreen;
+            margin: 500px;
+            padding: 10px;
+            border: 10px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="w"></div>
+
+    <script>
+        let father = document.querySelector('.father');
+        let son = document.querySelector('.son');
+        let w = document.querySelector('.w');
+        //获取元素偏移量
+        console.log(father.offsetTop);
+        console.log(father.offsetLeft);
+        //距离带有定位父元素的位置
+        console.log(son.offsetLeft);
+        console.log(son.offsetTop);
+        //获取元素自身的大小
+        console.log(w.offsetWidth);
+        console.log(w.offsetHeight);
+        //返回带有定位的父亲，否则返回body
+        console.log(son.offsetParent);
+        console.log(son.parentNode); //返回父亲，是最近一级的父亲，不管有没有定位
+        console.log(father.offsetParent);
+    </script>
+</body>
+
+</html>

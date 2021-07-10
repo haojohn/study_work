@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //利用函数翻转任意数组
+        function reverse(arr) {
+            let newArr = [];
+            for (let i = arr.length - 1; i >= 0; i--) {
+                newArr[newArr.length] = arr[i];
+            }
+            return newArr;
+        }
+
+        let arr1 = reverse([1, 2, 3, 5, 8, 9]);
+        console.log(arr1);
+    </script>
+</body>
+
+</html>

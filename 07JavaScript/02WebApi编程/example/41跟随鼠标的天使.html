@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../images/angel.gif" alt="">
+    <script>
+        let img = document.querySelector('img');
+        document.addEventListener('mousemove', function(e) {
+            //核心原理：每次鼠标移动，都会获得最新的鼠标坐标，把获得的x和y做为图片的top和left
+            let x = e.pageX;
+            let y = e.pageY;
+            //把x，y做为图片的left，top，并为图片的宽和高的一半，将鼠标定位到图片中间
+            img.style.left = x - 50 + 'px';
+            img.style.top = y - 40 + 'px';
+        })
+    </script>
+</body>
+
+</html>
