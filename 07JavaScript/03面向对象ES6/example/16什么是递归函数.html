@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 递归函数：函数内部自己调用自己，即递归函数，很容易发生栈溢出的错误，即死循环
+        // 所以一定要在递归函数里面加退出条件return
+
+        // 利用递归求阶乘 1*2*3*4*...*n
+        function fn(n) {
+            if (n === 1) {
+                return 1;
+            }
+            return n * fn(n - 1);
+        }
+        console.log(fn(3));
+
+        //详细思路如下，假如用户输入的是3
+        // return 3 * fn(2)
+        // return 3 * (2 * fn(1))
+        // return 3 * （2 * 1）
+        // return 3 * 2
+        // return 6
+
+
+        // 利用递归求斐波那契数列(兔子序列)，1、1、2、3、5、8、13、21...
+        // 只需要知道用户输入的n的前面两项n-1和n-2,相加即可求出n对应的数值是多少
+        function fb(n) {
+            if (n <= 2) {
+                return 1;
+            }
+            return fb(n - 1) + fb(n - 2);
+        }
+        console.log('斐波那契数列：' + fb(8));
+    </script>
+
+</body>
+
+</html>

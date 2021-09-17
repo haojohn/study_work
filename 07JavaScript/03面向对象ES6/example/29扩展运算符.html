@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <script>
+        // 扩展运算符可以将数组或者对象转为用逗号分割的参数序列
+        let ary = [1, 2, 3];
+        // ...ary 就可以把数组转为用逗号分割的参数序列 1，2，3
+        console.log(...ary);
+
+        // 1.扩展运算符可以应用于合并数组
+        let ary1 = [1, 2, 3];
+        let ary2 = [3, 4, 5];
+        let ary3 = [...ary1, ...ary2];
+        console.log(ary3);
+        ary1.push(...ary2);
+        console.log(ary1);
+
+        // 2.将伪数组或可遍历对象转换为真正的数组
+        let oDvis = document.querySelectorAll('div');
+        console.log(oDvis);
+        oDvis = [...oDvis]; //转换为真正的数组
+        console.log(oDvis);
+    </script>
+</body>
+
+</html>

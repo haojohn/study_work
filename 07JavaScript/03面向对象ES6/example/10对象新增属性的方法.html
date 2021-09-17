@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let obj = {
+            name: '小明',
+            age: 20,
+            price: 1999
+        };
+
+        // Object.defineProperty(obj,prop,descriptor)
+        Object.defineProperty(obj, 'num', {
+            value: 2000, // 设置属性的值，默认为undefined
+            writable: true, //属性值否可以可以重写，默认为false
+            enumerable: true, //目标属性是否可以被枚举， 默认为false
+            configurable: true, //目标属性是否可以被删除或是否可以再次修改特性 ，默认为false
+        });
+        console.log(obj);
+    </script>
+</body>
+
+</html>

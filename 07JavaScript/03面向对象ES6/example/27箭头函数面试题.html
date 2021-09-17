@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var age = 100;
+        var obj = {
+            age: 20,
+            say: () => {
+                alert(this.age);
+            }
+        };
+        // 首先对象不会产生作用域，对象的方法实际是定义在全局里面，所以是100
+        obj.say(); //输出为100
+    </script>
+</body>
+
+</html>

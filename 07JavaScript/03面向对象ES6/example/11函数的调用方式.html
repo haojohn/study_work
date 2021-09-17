@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数调用方式
+        // 1.普通函数，this指向window
+        function fn() {
+            console.log('普通函数this指向window' + this);
+        };
+        fn();
+        // 2.对象的方法,
+        let o = {
+            say: function() {
+                console.log('人生的巅峰2');
+            }
+        }
+        o.say();
+        // 3.构造函数，this指向实例对象，原型对象里面的this指向的也是实例对象
+        function Star() {}
+        new Star();
+        // 4.绑定事件函数，this指向函数的调用者
+        // btn.onclick = function(){} //点击按钮触发调用
+        // 5.定时器函数，定时器中的this指向是window
+        setInterval(function() {
+            console.log('2秒触发');
+        }, 2000);
+        // 6.立即执行函数，this也是指向window
+        (function() {
+            console.log('立即执行函数');
+        })()
+    </script>
+</body>
+
+</html>

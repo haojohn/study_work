@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 类的继承 extends
+        // 子类继承父类的属性和方法
+        class Father {
+            money() {
+                console.log(100);
+            }
+        }
+        // 继承父类
+        class Son extends Father {
+
+        }
+        let son = new Son();
+        son.money();
+
+        // super关键字
+        // super关键字，用于访问和调用对象父类上的函数，可以调用父类的构造函数，也可调用普通函数
+        // super 必须在子类this之前调用
+        class A1 {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x + this.y);
+            }
+            say() {
+                return '我是A1';
+            }
+        }
+        class B1 extends A1 {
+            constructor(x, y) {
+                // super必须写在第一行
+                super(x, y); //把子类构造的x和y值传给父类，调用父类的构造函数
+                this.x = x;
+                this.y = y;
+            }
+            say() { //调用父类的普通方法
+                console.log(super.say() + '的儿子B1');
+            }
+        }
+        let b1 = new B1(10, 20);
+        b1.sum();
+        b1.say();
+
+        // 继承中的属性和方法的查找原则：就近原则
+    </script>
+</body>
+
+</html>

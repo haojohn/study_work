@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [];
+        for (var i = 0; i < 2; i++) {
+            arr[i] = function() {
+                console.log(i);
+            }
+        }
+        // 值为多少以下运行之后
+        // 因为下面的函数里的i，根据作用域链，首先会在自身函数查找，没有i变量
+        // 没有再去上层查找，则找到全局i，且i循环结束为2，所以都为2下面两个值
+        arr[0](); //2
+        arr[1](); //2
+
+
+        let arrlet = [];
+        for (let i = 0; i < 2; i++) {
+            arrlet[i] = function() {
+                console.log(i);
+            }
+        }
+        // 首先最里面函数没有i变量，然后往上级查找，循环体中有let定义的i，为块级作用域
+        // 互不影响，所以在每一个函数里面都有一个块级作用域let i，因此值为0和1 
+
+        arrlet[0](); //0
+        arrlet[1](); //1
+    </script>
+</body>
+
+</html>

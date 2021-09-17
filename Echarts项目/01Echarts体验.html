@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+        
+        .box2 {
+            margin-top: 100px;
+            width: 400px;
+            height: 400px;
+            background-color: seagreen;
+        }
+    </style>
+    <!-- 1.下载并引入echarts.js文件 -->
+    <script src="js/echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- 2.准备一个盒子用来装生成的图表，注意盒子必须具备大小 -->
+    <div class="box"></div>
+
+    <div class="box2"></div>
+    <script>
+        // 3.初始化echarts实例对象
+        let myChart = echarts.init(document.querySelector('.box'));
+        // 4.指定配置项和数据（柱状图的配置项和数据）
+        let option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        // 5.将配置项设置给echarts实例对象
+        myChart.setOption(option);
+
+        //重复以上操作，来创建一个饼形图
+        let myChart2 = echarts.init(document.querySelector('.box2'));
+        let option2 = {
+            title: {
+                text: '某站点用户访问来源',
+                subtext: '纯属虚构',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+            },
+            series: [{
+                name: '访问来源',
+                type: 'pie',
+                radius: '50%',
+                data: [{
+                    value: 1048,
+                    name: '搜索引擎'
+                }, {
+                    value: 735,
+                    name: '直接访问'
+                }, {
+                    value: 580,
+                    name: '邮件营销'
+                }, {
+                    value: 484,
+                    name: '联盟广告'
+                }, {
+                    value: 300,
+                    name: '视频广告'
+                }],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+        myChart2.setOption(option2)
+    </script>
+</body>
+
+</html>

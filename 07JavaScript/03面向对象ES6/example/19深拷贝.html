@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 1.浅拷贝：只是拷贝一层，更深层次对象级别的只拷贝引用地址
+        // 2.深拷贝：拷贝多层，每一级别的数据都会拷贝
+
+        let obj = {
+            id: 1,
+            name: 'andy',
+            msg: {
+                age: 20
+            },
+            color: ['pink', 'red']
+        };
+        let o = {};
+        // 深拷贝，封装函数，利用递归
+        function deepCopy(newobj, oldobj) {
+            for (let key in oldobj) {
+                // 判断我们的属性值属于哪种数据类型
+                // 1.获取属性值
+                let item = oldobj[key];
+                // 2.判断这个值是否是数组
+                if (item instanceof Array) {
+                    newobj[key] = [];
+                    deepCopy(newobj[key], item);
+                } else if (item instanceof Object) {
+                    // 2.判断这个值是否是对象
+                    newobj[key] = {};
+                    deepCopy(newobj[key], item)
+                } else {
+                    // 2.值是简单数据类型
+                    newobj[key] = item;
+                }
+            }
+        }
+
+        deepCopy(o, obj);
+        console.log(o);
+
+        let arr = [];
+        console.log(arr instanceof Object);
+        o.msg.age = 80;
+        console.log(obj);
+    </script>
+</body>
+
+</html>

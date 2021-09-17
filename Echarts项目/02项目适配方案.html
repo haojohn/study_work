@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/flexible.js"></script>
+    <style>
+        /* flexible.js，把屏幕平均划分为24等份
+            并在设置CSSrrem设置了1rem=80px
+         */
+        
+        @media screen and(max-width:1024px) {
+            html {
+                /* 1024除以24 */
+                font-size: 42.66px !important;
+            }
+        }
+        
+        @media screen and (min-width:1920px) {
+            html {
+                /* 1920除以24 */
+                font-size: 80px !important;
+            }
+        }
+        
+        .box {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

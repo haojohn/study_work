@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let data = [{
+            id: 1,
+            name: '家电',
+            goods: [{
+                id: 11,
+                gname: '冰箱',
+                goods: [{
+                    id: 111,
+                    gname: '格力',
+
+                }, {
+                    id: 112,
+                    gname: '海尔'
+                }]
+            }, {
+                id: 12,
+                gname: '洗衣机'
+            }]
+        }, {
+            id: 2,
+            name: '服饰'
+        }];
+        // 输入id号，返回对应的数据
+        // 1.利用forEach
+        function getID(data, id) {
+            let o = {};
+            data.forEach(element => {
+
+                if (element.id === id) {
+                    // console.log(element);
+                    o = element;
+                    return element;
+                    // 想要获得里层的数据，可以使用递归函数
+                } else if (element.goods && element.goods.length > 0) {
+                    o = getID(element.goods, id); //递归一定要有返回值过来的
+                }
+            });
+            return o;
+        };
+        console.log(getID(data, 1));
+        console.log(getID(data, 2));
+        console.log(getID(data, 11));
+        console.log(getID(data, 12));
+        console.log(getID(data, 111));
+        console.log(getID(data, 112));
+    </script>
+</body>
+
+</html>

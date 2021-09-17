@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 1.中括号，字符集合，匹配中括号中的任意字符
+        let reg = /^[abc]$/;
+
+        // 2.大括号，量词符，里面表示重复次数
+        let reg1 = /^abc{3}$/; //让c重复3次
+
+        // 3.小括号，表示优先级
+        let reg1 = /^(abc){3}$/; //让abc重复3次
+    </script>
+</body>
+
+</html>

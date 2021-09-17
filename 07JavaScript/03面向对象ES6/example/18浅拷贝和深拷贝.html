@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.浅拷贝：只是拷贝一层，更深层次对象级别的只拷贝引用地址
+        // 2.深拷贝：拷贝多层，每一级别的数据都会拷贝
+        let obj = {
+            name: 1,
+            age: 18,
+            msg: {
+                uage: 20
+            }
+        }
+
+        // ES6之前，浅拷贝，利用for循环
+        let o = {}
+            // for (const key in obj) {
+            //     // 浅拷贝，只是把msg对象的引用拷贝了进去，o和obj指向同一个引用
+            //     o[key] = obj[key];
+            // }
+            // console.log(o);
+            // o.msg.uage = 50;
+            // console.log(obj);
+
+        // ES6语法糖
+        Object.assign(o, obj);
+        console.log(o);
+        o.msg.uage = 50;
+        console.log(obj);
+    </script>
+</body>
+
+</html>

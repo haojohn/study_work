@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.利用RegExp对象来创建 正则表达式
+        let re = new RegExp(/123/);
+        console.log(re);
+
+        // 2.利用字面量创建 正则表达式，这是使用最多的方式
+        let rg = /123/; //只要包含123都是true
+
+        rg.test(123); //true
+        rg.test('abc'); //false
+
+        let rg1 = /^abc$/; //精确匹配，必须是abc才可以
+        let rg2 = /[abc]/; //只要包含有a或b或c 都可以
+        let rg3 = /^[abc]$/; //三选一，只有是a或b或c，才返回true
+        let rg4 = /^[a-z]$/; //26个小写字母范围中任何一个都可以
+        let rg5 = /^[a-zA-Z0-9_]$/; //包含数字、字母或下划线中任何一个都可以
+        let rg6 = /^[^a-zA-Z0-9_]$/; //取反，不包含数字、字母或下划线的才可以
+        let rg7 = /^[a-zA-Z0-9_]{6,16}$/; //包含数字、字母或下划线且长度为6到16之间都可以
+    </script>
+</body>
+
+</html>

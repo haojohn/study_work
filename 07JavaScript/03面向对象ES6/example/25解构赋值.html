@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.数组解构，按照一一对应的关系，来进行提取赋值给变量
+        let [a, b, c, d, e] = [1, 2, 3];
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(d); //没有对应的值，则为undefined
+        console.log(e); //没有对应的值，则为undefined
+
+        // 2.对象解构，按照对象的属性，来进行提取赋值给相对应的变量
+        let Person = {
+            name: '张三',
+            age: 20
+        };
+        let {
+            age,
+            name
+        } = Person;
+        console.log(age);
+        console.log(name);
+
+        let {
+            name: myName,
+            age: myAge
+        } = Person;
+        console.log(myName);
+        console.log(myAge);
+    </script>
+</body>
+
+</html>

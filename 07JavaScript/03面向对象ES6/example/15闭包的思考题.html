@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+                var name = 'The Window';
+                var object = {
+                    name: 'My Object',
+                    getNameFunc: function() {
+                        return function() {
+                            return this.name;
+                        }
+                    }
+                };
+                // 输出的内容是什么，最后结果应该为 The Window，没有产生闭包
+                console.log(object.getNameFunc()());
+                */
+        // // 解析上面内容
+        // var f = object.getNameFunc();
+        // // 类似于
+        // var f = function() {
+        //     return this.name;
+        // }
+        // f(); //f匿名函数内部this指向window
+
+
+        var name = 'The Window';
+        var object = {
+            name: 'My Object',
+            getNameFunc: function() {
+                var that = this;
+                return function() {
+                    return that.name;
+                }
+            }
+        };
+        // 输出的内容是什么，最后结果应该为 My Object，产生了闭包函数
+        console.log(object.getNameFunc()());
+    </script>
+</body>
+
+</html>

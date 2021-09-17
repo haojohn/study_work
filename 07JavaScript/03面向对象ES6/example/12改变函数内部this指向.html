@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        // 改变函数内部this指向
+
+        console.log('call方法');
+        // 1.call
+        let obj = {
+            name: 'wangxiaoyu'
+        };
+
+        function fn(a, b) {
+            console.log(this);
+            console.log(a + b);
+        }
+        fn.call(obj, 1, 2); //调用函数，此外，fn函数内部this就指向了obj，而不再是window
+        //也可以用来实现继承
+        function Father(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        function Son(uname, age, sex) {
+            Father.call(this, uname, age, sex); //改变了父类里的this指向，指向了son
+        }
+        let son = new Son('刘德华', 18, '男');
+        console.log(son);
+
+
+        console.log('apply方法');
+        //2.apply
+        let obj01 = {
+            name: 'Sandy'
+        };
+
+        function fun(arr) {
+            console.log(this);
+            console.log(arr);
+        }
+        fun.apply(obj01, ['pink']); //调用函数，此外，fun函数内部this指向了obj01对象，而不再是window，
+        // apply传递的参数是以数组形式传递的，和call不同
+        // 主要应用，利用apply借助于数学内置对象求最大值
+        let arr01 = [1, 2, 88, 99, 30, 50];
+        let max = Math.max.apply(Math, arr01);
+        console.log(max);
+
+
+        console.log('bind方法');
+        // 3.bind方法
+        let obj03 = {
+            name: 'SEX03'
+        };
+
+        function fn01() {
+            console.log(this);
+        };
+        let f = fn01.bind(obj03); //不会调用函数，会返回一个指定this与原函数的拷贝
+        f();
+        // 不会调用原来的函数，可以改变this指向，返回原函数和指定this的新函数
+        // 如果有的函数不需要立即调用，但是又想改变this指向，此时就能用到bind方法
+        // 例如，有个按钮，点击指回，就禁用，3s之后就再开启按钮
+        let btn = document.querySelector('button');
+        btn.onclick = function() {
+            this.disabled = true; //这个this指向的是btn按钮
+            setTimeout(function() {
+                this.disabled = false; //在此函数后面绑定bind(this)，此时this也指向了btn
+            }.bind(this), 3000)
+        }
+    </script>
+</body>
+
+</html>

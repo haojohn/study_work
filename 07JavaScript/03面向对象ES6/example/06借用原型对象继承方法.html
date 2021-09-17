@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.父构造函数
+        function Father(uname, age) {
+            // this指向父构造函数的对象实例
+            this.uname = uname;
+            this.age = age;
+        }
+        Father.prototype.money = function() {
+            console.log('会赚钱，共同方法');
+        };
+        // 2.子构造函数
+        function Son(uname, age, score) {
+            // this就指向子构造函数的对象实例
+            Father.call(this, uname, age);
+            this.score = score
+        }
+
+        let son = new Son('刘德华', 18, 100);
+        console.log(son);
+
+        // 如何正确的让儿子也去继承父亲的方法，且不影响儿子自己的私有方法
+        // Son.prototype = Father.prototype;   不可以这样写，会影响孩子的私有方法
+        Son.prototype = new Father(); //此句话就是关键,但也要记得下面一句
+        // 如果利用对象的形式修改了原型对象，别忘了利用constructor指回原来的构造函数
+        Son.prototype.constructor = Son;
+        Son.prototype.exam = function() {
+            console.log('我要考试，但你们都不要');
+        };
+
+        let son01 = new Son('谢霆锋', 30, 100);
+        console.log(son01);
+        console.log(Father.prototype);
+        console.log(Son.prototype.constructor);
+    </script>
+</body>
+
+</html>
