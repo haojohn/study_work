@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap.css">
+    <script src="../lib/jquery.js"></script>
+</head>
+
+<body style="padding: 20px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">发表评论</h3>
+        </div>
+        <form class="panel-body" id="formAddcmt">
+            <div>评论人：</div>
+            <input type="text" class="form-control" name="username">
+            <div>评论内容：</div>
+            <textarea name="content" class="form-control"></textarea>
+            <button type="submit" class="btn btn-primary">发表评论</button>
+        </form>
+    </div>
+    <!-- 评论列表 -->
+    <ul class="list-group" id="list-group">
+        <!-- <li class="list-group-item">
+            <span class="badge" style="background-color: skyblue;">评论时间：</span>
+            <span class="badge" style="background-color: salmon;">评论人：</span> Cras justo odio
+        </li> -->
+    </ul>
+
+    <script>
+        $(function() {
+            // 1.获取评论列表
+            function getContentList() {
+                $.ajax({
+                    type: 'get',
+                    url: 'http://www.liulongbin.top:3006/api/cmtlist',
+                    success: function(res) {
+                        if (res.status !== 200) {
+                            return alert('获取评论列表失败');
+                        }
+                        let arr = [];
+                        res.data.forEach(element => {
+                            // console.log(element);
+                            arr.push(` <li class="list-group-item"><span class="badge" style="background-color: skyblue;">评论时间：${element.time}</span><span class="badge" style="background-color: salmon;">评论人：${element.username}</span> ${element.content}</li>`);
+                        });
+                        // 渲染UI列表结构
+                        $('#list-group').empty().append(arr.join(''));
+                    }
+                });
+            }
+
+            getContentList();
+
+
+            // 2.发表评论
+            $('#formAddcmt').on('submit', function(e) {
+                // 阻止表单默认跳转行为
+                e.preventDefault();
+                // 获取全部参数
+                let arrStr = $(this).serialize();
+                $.ajax({
+                    type: 'post',
+                    url: 'http://www.liulongbin.top:3006/api/addcmt',
+                    data: arrStr,
+                    success: function(res) {
+                        if (res.status !== 201) {
+                            return alert('添加评论失败');
+                        }
+                        // 重新获取评论列表
+                        getContentList();
+                        // 重置表单,将jQuery对象转换为原生的dom对象，就可以调用重置方法了
+                        $('#formAddcmt')[0].reset();
+                    }
+                })
+            })
+
+        })
+    </script>
+</body>
+
+</html>

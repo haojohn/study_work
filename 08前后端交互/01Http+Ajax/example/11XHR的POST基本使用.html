@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 使用步骤
+        // 1.new一个let xhr = new XMLHttpRequest()对象
+        let xhr = new XMLHttpRequest();
+        // 2.调用xhr.open()函数,指定请求方式与url地址
+        xhr.open('post', 'http://www.liulongbin.top:3006/api/addbook');
+        // 3.设置Content-Type属性（固定写法）,固定位置
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // 4.调用xhr.send()函数，发送ajax请求，并且同时将数据以查询字符串的形式，提交
+        xhr.send('bookname=富爸爸&author=kuli&publisher=深圳出版社');
+        // 4.监听xhr.onreadystatechange()事件
+        xhr.onreadystatechange = function() {
+            // 4.1 监听xhr对象的请求状态readyState；与服务器响应的状态status
+            if (xhr.readyState === 4 && xhr.status === 200) { //固定写法
+                // 请求成功，返回数据,打印服务器响应回来的数据
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>

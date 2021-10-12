@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/jquery.js"></script>
+</head>
+
+<body>
+
+    <button id="btnGet">发起不带参数的get请求</button>
+
+    <button id="btnGets">发起带参数的get请求</button>
+
+    <button id="btnPost">发起带参数的post请求</button>
+
+    <button id="btnAjax">ajax请求,发起get</button>
+
+    <button id="btnAjaxs">ajax请求,发起post</button>
+
+
+    <script>
+        $(function() {
+            // 1.$.get(url,[data],[callback]) 
+            // 请求url地址，参数，回调函数
+            // 不带参数的get请求
+            $('#btnGet').on('click', function() {
+                $.get('http://www.liulongbin.top:3006/api/getbooks', function(res) {
+                    console.log(res);
+                })
+            });
+
+            // 带参数的get请求
+            $('#btnGets').on('click', function() {
+                $.get('http://www.liulongbin.top:3006/api/getbooks', {
+                    id: 1
+                }, function(res) { //响应回来的数据
+                    console.log(res);
+                })
+            });
+
+            // 2.$.post(url,[data],[callback])
+            // 请求url地址，参数，回调函数
+            // 带参数的post请求
+            $('#btnPost').on('click', function() {
+                $.post('http://www.liulongbin.top:3006/api/addbook', {
+                    bookname: '富爸爸穷爸爸',
+                    author: '库日',
+                    publisher: '江苏出版社'
+                }, function(res) { //响应回来的数据
+                    console.log(res);
+                })
+            });
+
+            // 3.$.ajax({type:'请求类型',url:'请求地址',data:{请求携带数据},success:function(res){请求成功后的返回}})
+            $('#btnAjax').on('click', function() {
+                $.ajax({
+                    type: 'get',
+                    url: 'http://www.liulongbin.top:3006/api/getbooks',
+                    data: {},
+                    success: function(res) {
+                        console.log(res);
+                    }
+                })
+            });
+
+            $('#btnAjaxs').on('click', function() {
+                $.ajax({
+                    type: 'post',
+                    url: 'http://www.liulongbin.top:3006/api/addbook',
+                    data: {
+                        bookname: '屌丝的人',
+                        author: 'curry',
+                        publisher: '江苏出版社'
+                    },
+                    success: function(res) {
+                        console.log(res);
+                    }
+                })
+            });
+        })
+    </script>
+
+</body>
+
+</html>

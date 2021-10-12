@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 正则exec()使用
+        let str = 'hello';
+        let pattern = /o/;
+
+        // 匹配成功，返回匹配结果，失败返回null
+        let s = pattern.exec(str);
+        console.log(s);
+
+        // 正则分组
+        let str01 = '<div>我是{{name}}</div>'
+        let pattern01 = /{{([a-zA-Z]+)}}/;
+        let s01 = pattern01.exec(str01);
+        console.log(s01);
+
+        // 字符串的替换replace()函数，返回替换后的字符串
+        console.log(`替换前的字符串${str01}`);
+        let str02 = str01.replace(s01[0], s01[1]);
+        console.log(`替换后的字符串${str02}`);
+
+        //多次匹配字符串
+        let str03 = '<div>我是{{name}}今天{{age}}岁了</div>'
+        let pattern02 = /{{\s*([a-zA-Z]+)\s*}}/;
+        let patResult = null;
+        while (patResult = pattern02.exec(str03)) {
+            str03 = str03.replace(patResult[0], patResult[1]);
+        }
+        console.log(str03);
+
+        // replace()替换为真值
+        let data = {
+            name: '李四',
+            age: 50
+        };
+        let str04 = '<div>我是{{name}}今天{{age}}岁了</div>'
+        let pattern04 = /{{\s*([a-zA-Z]+)\s*}}/;
+        let patResult04 = null;
+        while (patResult04 = pattern04.exec(str04)) {
+            // {{name}} = data[name],{{age}} = data[age]
+            str04 = str04.replace(patResult04[0], data[patResult04[1]]);
+        }
+        console.log(str04);
+    </script>
+</body>
+
+</html>

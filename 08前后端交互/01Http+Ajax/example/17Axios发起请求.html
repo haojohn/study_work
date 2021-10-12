@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/axios.js"></script>
+</head>
+
+<body>
+
+    <button id="btn1">发起get请求</button>
+    <button id="btn2">发起post请求</button>
+    <button id="btn3">发起axios请求</button>
+
+    <script>
+        // get请求
+        document.querySelector('#btn1').addEventListener('click', function() {
+            let url = 'http://liulongbin.top:3006/api/get';
+            let paramsObj = {
+                name: 'zs',
+                age: 20
+            };
+            axios.get(url, {
+                params: paramsObj
+            }).then(function(res) {
+                // 输出服务器响应回来的数据
+                console.log(res.data);
+            })
+        });
+        // post请求
+        document.querySelector('#btn2').addEventListener('click', function() {
+            let url = 'http://liulongbin.top:3006/api/post';
+            let dataObj = {
+                address: '北京',
+                location: '顺义区'
+            };
+            axios.post(url, dataObj).then(function(res) {
+                // 输出服务器响应回来的数据
+                console.log(res.data);
+            })
+        });
+
+        // axios请求
+        document.querySelector('#btn3').addEventListener('click', function() {
+            axios({
+                // GET请求，传递参数使用params
+                // method: 'get',
+                // url: 'http://liulongbin.top:3006/api/get',
+                // params: {
+                //     name: 'zs',
+                //     age: 20
+                // }
+
+                // POST请求，传递参数使用data
+                method: 'post',
+                url: 'http://liulongbin.top:3006/api/post',
+                data: {
+                    address: '北京',
+                    location: '顺义区'
+                }
+            }).then(function(res) {
+                console.log(res.data);
+            })
+        });
+    </script>
+</body>
+
+</html>

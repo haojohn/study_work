@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="user-box">
+
+    </div>
+    <!-- 自定义模板 -->
+    <script type="text/html" id="tpl-user">
+        <div>姓名：{{name}}</div>
+        <div>年龄：{{age}}</div>
+        <div>性别：{{gender}}</div>
+        <div>住址：{{address}}</div>
+    </script>
+
+    <!--  -->
+    <script>
+        // 定义数据
+        let data = {
+            name: '李四',
+            age: 28,
+            gender: '女',
+            address: '深圳湾区'
+        };
+        // 调用模板引擎
+        let htmlstr = template('tpl-user', data);
+        console.log(htmlstr);
+        // 渲染到页面
+        document.querySelector('#user-box').innerHTML = htmlstr;
+
+        // 封装自定义模板引擎
+        function template(id, data) {
+            // 获取id里的html
+            let str = document.getElementById(id).innerHTML;
+            let pattern = /{{\s*([a-zA-Z]+)\s*}}/;
+            let patternResult = null;
+            while (patternResult = pattern.exec(str)) { //当为null时，则表示已经替换完成
+                str = str.replace(patternResult[0], data[patternResult[1]]);
+            }
+            return str;
+        }
+    </script>
+</body>
+
+</html>
